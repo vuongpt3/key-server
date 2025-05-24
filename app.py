@@ -68,9 +68,7 @@ def check_key():
                 return jsonify({"success": False, "message": "Sai thiết bị"})
             return jsonify({"success": True, "message": "Key hợp lệ"})
     return jsonify({"success": False, "message": "Key không tồn tại"})
-    @app.route("/list-keys", methods=["GET"])
-def list_keys():
-    keys = load_data()
-    return jsonify(keys)
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
