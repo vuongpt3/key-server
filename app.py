@@ -72,6 +72,5 @@ def check_key():
 def list_keys():
     keys = load_data()
     return jsonify(keys)
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
