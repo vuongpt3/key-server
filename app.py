@@ -25,8 +25,12 @@ def save_data(data):
 def create_key():
     data = request.json
     duration = data.get("duration")
-    if duration not in [7, 30, 60]:
-        return jsonify({"success": False, "message": "Chỉ chấp nhận 7, 30 hoặc 60 ngày"})
+    game = data.get("game")
+    max_device = data.get("maxDevice")
+    price = data.get("price")
+
+    if duration not in [7, 14, 30]:
+        return jsonify({"success": False, "message": "Chỉ chấp nhận 7, 14 hoặc 30 ngày"})
 
     code = uuid.uuid4().hex[:8].upper()
     key_str = f"VIP_{duration}D_{code}"
@@ -36,7 +40,10 @@ def create_key():
         "key": key_str,
         "duration": duration,
         "createdAt": datetime.utcnow().isoformat(),
-        "deviceId": None
+        "deviceId": None,
+        "game": game,
+        "maxDevice": max_device,
+        "price": price
     })
     save_data(keys)
 
